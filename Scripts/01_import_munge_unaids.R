@@ -35,7 +35,6 @@
 # LOAD DATA ============================================================================  
 
   unaids_list <- list.files("Data_public/", full.names = T)
-  unaids_indics <- list.files("Data_public/")  %>% str_remove_all(.x, "Elimination of vertical transmission_")
   
   new_hiv <- "Data/New infant HIV infections Male+Female.csv"
 
@@ -55,14 +54,13 @@
     pivot_wider(names_from = indic, 
                 values_from = value)
   
-  
   new_hiv_inf <- read_csv(new_hiv) %>% 
     rename(Country = `...4`) 
   
   df_wide_all <- df_wide %>% left_join(new_hiv_inf) %>% 
-    select(ISO2, ISO3, Country, everything())
+    select(ISO2, ISO3, Country, everything()) 
   
-  
+
   write_csv(df_wide_all, "Dataout/2022_UNAIDS_Vertical_transmission_indic_new_infant_hiv.csv", na = "")
   write_csv(df, "Dataout/2022_UNAIDS_vt_indic_long.csv", na = "")    
   
