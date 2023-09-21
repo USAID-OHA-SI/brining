@@ -76,7 +76,7 @@
 # VIZ ============================================================================
 
   # Write a version to google drive for folks to play with
-  write_sheet(df_combo, ss = gs_id, sheet = "custom_table")
+  write_sheet(df_combo, ss = gs_id, sheet = "custom_table_revised")
   
   
   nms_ <- names(df_combo)
